@@ -293,8 +293,14 @@ class DemandEmailManager(EmailManager):
         df = pd.concat(all_data, ignore_index=True)
         # Restrict data to only include values up to current date
         today = datetime.now().date()
-        df = df.loc[(df.Time.dt.date <= today) & (df.MW > 0), :]
+        df['Date'] = df.Time.dt.date
+        df = df.loc[(df.Date <= today) & (df.MW > 0), :]
         df.drop_duplicates(inplace=True)
         df.sort_values(by=['Time', 'DemandType'], ignore_index=True, inplace=True)
         # Identify the latest versions of DemandType data to account for CAISO corrections
+        max = df.copy()
+        max = max.groupby(['DemandType', 'Date'])['AsOfDate'].max().to_frame().reset_index()
+        # print(max.info())
+        # print(max.head(10))
+        df = df.merge(max, on=['DemandType', 'Date', 'AsOfDate'])
         self.results = df

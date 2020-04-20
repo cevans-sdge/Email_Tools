@@ -45,6 +45,21 @@ print(f'Loaded {len(dem.emails)} unique emails')
 dem.reformat_emails()
 ```
 
+### Generate Demand Peak DataFrame
+
+```
+from email_tools.classes import DemandEmailManager
+
+src_path = '** Directory where emails are stored **'
+dest_path = '** Directory where you want to save formatted .txt files **'
+
+# Instantiate Demand Email Manager
+dem = DemandEmailManager(src_path, dest_path)
+
+# Pull formatted email files from Save Paths in DataFrame
+dem.results_to_df()
+```
+
 ## Authors
 
 * **Colin Evans** - Senior Economic Advisor ~ San Diego Gas & Electric
