@@ -301,4 +301,5 @@ class DemandEmailManager(EmailManager):
         max = df.copy()
         max = max.groupby(['DemandType', 'Date'])['AsOfDate'].max().to_frame().reset_index()
         df = df.merge(max, on=['DemandType', 'Date', 'AsOfDate']).sort_values(by=['Date', 'DemandType'], ignore_index=True)
+        # Save results to DemandEmailManager attribute
         self.results = df
