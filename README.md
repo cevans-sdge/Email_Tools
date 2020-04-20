@@ -58,6 +58,11 @@ dem = DemandEmailManager(src_path, dest_path)
 
 # Pull formatted email files from Save Paths in DataFrame
 dem.results_to_df()
+
+# View Results
+print(dem.results.info())
+print(dem.results.head())
+print(dem.results.describe()) 
 ```
 
 ## Authors
