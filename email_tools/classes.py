@@ -4,6 +4,7 @@ import re
 import os
 import pandas as pd
 from glob import glob
+from datetime import datetime
 
 
 class EmailManager:
@@ -290,6 +291,10 @@ class DemandEmailManager(EmailManager):
                     df = pd.DataFrame(columns=['DemandType', 'Time', 'MW', 'AsOfDate'])
                 all_data.append(df)
         df = pd.concat(all_data, ignore_index=True)
+        # Restrict data to only include values up to current date
+        today = datetime.now().date()
+        df = df.loc[(df.Time.dt.date <= today) & (df.MW > 0), :]
         df.drop_duplicates(inplace=True)
         df.sort_values(by=['Time', 'DemandType'], ignore_index=True, inplace=True)
+        # Identify the latest versions of DemandType data to account for CAISO corrections
         self.results = df
