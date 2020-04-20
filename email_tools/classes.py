@@ -152,7 +152,7 @@ class DemandEmailManager(EmailManager):
                 else:
                     queue = self.queue[:limit].copy()
             for i, message in enumerate(queue):
-                print(f'Load Email {i + 1} of {len(queue)}')
+                # print(f'Load Email {i + 1} of {len(queue)}')
                 if message.find('.msg') > 0:
                     content = extract_msg.Message(message)
                     if content.to:
@@ -202,7 +202,7 @@ class DemandEmailManager(EmailManager):
     def reformat_emails(self):
         if self.emails:
             for i, message in enumerate(self.emails):
-                print(f'Converting Email {i + 1} of {len(self.emails)}')
+                # print(f'Converting Email {i + 1} of {len(self.emails)}')
                 if message:
                     parse = self.parse_email_string(message)
                     for save_path in self.save_paths:
