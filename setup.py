@@ -11,7 +11,7 @@ setuptools.setup(
     description="Tools for extracting and manipulating emails in the MSG and TXT format",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/cevans-sdge/email_tools",
+    url="https://github.com/cevans-sdge/Email_Tools.git",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
