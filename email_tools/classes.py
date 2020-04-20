@@ -300,7 +300,5 @@ class DemandEmailManager(EmailManager):
         # Identify the latest versions of DemandType data to account for CAISO corrections
         max = df.copy()
         max = max.groupby(['DemandType', 'Date'])['AsOfDate'].max().to_frame().reset_index()
-        # print(max.info())
-        # print(max.head(10))
-        df = df.merge(max, on=['DemandType', 'Date', 'AsOfDate'])
+        df = df.merge(max, on=['DemandType', 'Date', 'AsOfDate']).sort_values(by=['Date', 'DemandType'], ignore_index=True)
         self.results = df
