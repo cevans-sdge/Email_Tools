@@ -1,2 +1,14 @@
 certifi==2020.4.5.1
+extract-msg==0.23.3
+IMAPClient==2.1.0
+mkl-fft==1.0.15
+mkl-random==1.1.0
+mkl-service==2.3.0
+numpy==1.18.1
+olefile==0.46
+pandas==1.0.3
+python-dateutil==2.8.1
+pytz==2019.3
+six==1.14.0
+tzlocal==1.5.1
 wincertstore==0.2
