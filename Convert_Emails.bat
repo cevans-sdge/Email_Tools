@@ -1,2 +1,2 @@
-python Procedures\Convert_Emails.py
+python Convert_Emails.py
 pause
